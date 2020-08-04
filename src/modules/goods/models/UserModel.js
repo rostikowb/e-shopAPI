@@ -8,7 +8,7 @@ const NewsSchema = Schema(
         lastN:{type:String},
         surN:{type:String},
         nick:{type:String},
-        number:{type:String},
+        tel:{type:String},
         city:{type:String},
         branchN:{type:String},
     }
