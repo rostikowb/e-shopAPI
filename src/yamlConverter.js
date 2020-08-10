@@ -80,3 +80,12 @@ export const search = () => {
     // console.log(res);
 
 };
+export const upMany = () => {
+    Goods.updateMany({}, {rating: 0, comments:[]}).then(t=>{
+        console.log(t);
+    }).catch(err=>{
+        console.log(err);
+    })
+    // console.log(res);
+
+};

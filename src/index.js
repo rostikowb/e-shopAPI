@@ -8,13 +8,12 @@ import routes from './modules/core/routes';
 import cors from './modules/core/cors';
 import errorHandling from './modules/core/errorHandling';
 import uploads from './modules/core/uploadsFile';
-import {axusInsertMany, search} from "./yamlConverter";
-
+import {axusInsertMany, search, upMany} from "./yamlConverter";
 
 const PORT = process.env.PORT || 5000;
 const app = express();
 
-app.disable('x-powered-by'); // DISABLE EXPRESS SIGNATURE
+app.disable('x-powered-by'); // ОТКЛЮЧАЕМ EXPRESS SIGNATURE
 mongoConnection();
 logger(app);
 parseResponse(app);
@@ -24,13 +23,12 @@ uploads(app);
 routes(app);
 errorHandling(app);
 
-// axusInsertMany();
-
-// search();
-
-
 app.listen(PORT, () => {
   console.log(`Node cluster worker ${process.pid}: listening on port ${PORT}`);
 });
 
+// axusInsertMany();
 
+// upMany();
+
+// search();

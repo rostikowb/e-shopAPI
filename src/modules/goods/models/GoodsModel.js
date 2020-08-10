@@ -1,12 +1,12 @@
-import {Schema, model} from 'mongoose';
+import {model, Schema} from 'mongoose';
 
 const GoodsSchema = new Schema(
     {
         _id: Schema.Types.ObjectId,
 
-        drPaId:{
-            type:String,
-            index:{unique:true}
+        drPaId: {
+            type: String,
+            index: {unique: true}
         },
 
         //available
@@ -16,7 +16,7 @@ const GoodsSchema = new Schema(
         //dropshipURL
         drUrl: {
             type: String,
-            index:{
+            index: {
                 unique: true
             }
         },
@@ -28,8 +28,8 @@ const GoodsSchema = new Schema(
         dopPrc: {
             type: Number
         },
-        dscnt:{
-            type:Number
+        dscnt: {
+            type: Number
         },
         rtlPrc: {
             type: Number,
@@ -64,20 +64,35 @@ const GoodsSchema = new Schema(
         //description
         dscrptn: {
             type: String,
-            index:{
+            index: {
                 type: "text",
                 default_language: "russian"
             }
         },
         //stock_quantity
-        stck_qntt:{
-            type:Number
+        stck_qntt: {
+            type: Number
         },
         //param
         prm: {
             type: [Object],
             index: true
-        }
+        },
+
+        rating:{type:Number},
+
+        comments: [{
+            userId: {type: Schema.Types.ObjectId, ref: "User"},
+            name: {type: String, required: true},
+            posi: {type: Boolean, required: true},
+            voice: {type: Number, default: 0},
+            date: {type: Number, required: true},
+            content: {
+                msg: {type: String, required: true},
+                plus: {type: String, required: true},
+                minus: {type: String, required: true},
+            }
+        }]
     },
 );
 

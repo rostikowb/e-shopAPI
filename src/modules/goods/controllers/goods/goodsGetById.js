@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 
 const goodsGetById = (req, res) => {
     const id = req.params.goodsId;
-    console.log(id);
+    // console.log(id);
     if (mongoose.Types.ObjectId.isValid(id)) {
         Goods.findById(id)
             .select('-__v -optPrc -dopPrc -drUrl')
@@ -12,15 +12,15 @@ const goodsGetById = (req, res) => {
                 if (doc) {
                     res.status(200).json(doc);
                 } else {
-                    res.status(404).json('Новини з таким id не існує');
+                    res.status(200).json('Такого товара нет в базе');
                 }
             })
             .catch(err => {
                 console.log(err);
-                res.status(500).json({error: err});
+                res.status(200).json({error: err});
             });
     } else {
-        res.status(404).json('Новини з таким id не існує');
+        res.status(200).json('Такого товара нет в базе');
     }
 };
 export default goodsGetById;

@@ -5,27 +5,30 @@ import Bcrypt from '../../../class/bcrypt'
 
 export const userLogin = (req, res) => {
 
+    let email = req?.body?.email;
+    let pass = req?.body?.pass;
+
     const validateEmail = (email) => {
         let pattern = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return pattern.test(email);
     };
-    let email = req.body?.email;
-    let pass = req.body?.pass;
 
-    if(!email||!pass) return res.status(200).json({invalid:true, message: 'Заполните пожалуйста все поля!'});
+    if (!email || !pass) return res.status(200).json({invalid: true, message: 'Заполните пожалуйста все поля!'});
 
-    if(!validateEmail(email)) return res.status(200).json({invalid:true, message: 'Невалидный email!'});
+    if (!validateEmail(email)) return res.status(200).json({invalid: true, message: 'Невалидный email!'});
 
     User.findOne({email: email})
-        .select('-_id')
+        .populate({path: 'boughtArr', select: '-UD'})
         .exec()
-        .then(async user => {
-            console.log(user);
+        .then(user => {
             if (!user) {
-                return res.status(200).json({invalid:true, message: 'Пользователь с таким емейлом не найден!'});
+                return res.status(200).json({invalid: true, message: 'Пользователь с таким емейлом не найден!'});
             } else {
-                let result = new Bcrypt(pass, user.password, user.email, user._id, bcrypt, jwt);
-                result.hashValidation(res,user);
+                // console.log(user.boughtArr[0].goods);
+                let result = new Bcrypt(pass, user.pass, user.email, user._id, bcrypt, jwt);
+                result.hashValidation(res, user).then(e => {
+                    return res.status(200).json(e);
+                });
             }
         })
         .catch(err => res.status(200).json(err));

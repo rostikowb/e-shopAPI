@@ -1,14 +1,14 @@
 import mongoose from 'mongoose';
-import News from '../../models/GoodsModel';
+import Goods from '../../models/GoodsModel';
 
 export default async function todoCreate(req, res) {
-    News.find({title: req.body.title}).then(result => {
+    Goods.find({title: req.body.title}).then(result => {
         if (result.length === 1) {
             return res.status(409).json({message: 'Така новина вже є'});
         }
 
         const _id = new mongoose.Types.ObjectId();
-        const news = new News({
+        const news = new Goods({
             _id,
             title: req.body.title,
             short: req.body.short,
