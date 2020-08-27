@@ -31,7 +31,7 @@ class Bcrypt {
                         },
                         process.env.JWT_KEY,
                         {
-                            expiresIn: '24h',
+                            // expiresIn: '48h',
                         },
                     );
                     console.log('OK');
@@ -47,6 +47,7 @@ class Bcrypt {
                             city: user?.city,
                             branchN: user?.branchN,
                             boughtArr: user?.boughtArr,
+                            cupon: user?.cupon,
                         },
                     });
                 } else {

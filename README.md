@@ -18,7 +18,7 @@ Look at `.env` file. If you have your own Atlas account change it
 For prod mode change environment variables on prod server (Heroku).
 
 #### Composition
-- Routing `./src/modules/core/routes.js`
+- Routing `./src/modules/core/rootRoutes.js`
 - DB (Mongo) `./src/modules/core/db.js`
 - CORS `./src/modules/core/cors.js`
 - Logger (Morgan)`./src/modules/core/logger.js`
