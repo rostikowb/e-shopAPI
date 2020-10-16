@@ -25,6 +25,7 @@
   "homepage": "https://github.com/bogutski/todo-server#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "bent": "^7.3.10",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "dotenv": "^6.1.0",
@@ -36,9 +37,10 @@
     "md5": "^2.3.0",
     "mongoose": "^5.9.25",
     "morgan": "^1.10.0",
+    "nodemailer": "^6.4.13",
     "randomstring": "^1.1.5",
-    "sharp": "^0.25.4",
-    "bent": "^7.3.10"
+    "sendmail": "^1.6.1",
+    "sharp": "^0.25.4"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",

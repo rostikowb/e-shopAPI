@@ -29,19 +29,19 @@ const goodsGetAll = (req, res) => {
         let page = req.query['page'];
         let sort = sortF(req.query['sort'], {avlbl: -1});
         let findParam = {};
+
         if (catalog) {
             findParam.ctgrId = catalog
         }
-    sort.ready = -1;
-        // console.log();
 
+        sort.ready = -1;
+        sort._id = 1;
 
-        // console.log(sort);
-
-        Goods.find(findParam)
-            .skip(page ? page * 59 : 0)
-            .limit(59)
+    // console.log(sort);
+    Goods.find(findParam)
             .sort(sort)
+            .skip(page ? page * 29 : 0)
+            .limit(29)
             .select('-__v -dscrptn -drUrl -mdl -optPrc -dopPrc -drUrl')
             .then(docs => {
                 res.status(200).json(docs);
@@ -49,7 +49,6 @@ const goodsGetAll = (req, res) => {
             .catch(err => {
                 res.status(200).json(err);
             });
-    }
-;
+    };
 
 export default goodsGetAll;

@@ -9,7 +9,6 @@ const goodsGetById = (req, res) => {
         select = '-__v -optPrc -dopPrc -drUrl'
     }
     const id = req.params.goodsId;
-    // console.log(id);
     if (mongoose.Types.ObjectId.isValid(id)) {
         Goods.findById(id)
             .select(select)

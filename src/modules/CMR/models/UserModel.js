@@ -14,6 +14,10 @@ const UserSchema = Schema(
             ip: {type: String},
             UA: {type: String},
         },
+        tmpPass: {
+            pin: {type: Number, default: 0},
+            date: {type: Number, default: 0}
+        },
         likesArr: {
             arr: [String],
             date: Number,
