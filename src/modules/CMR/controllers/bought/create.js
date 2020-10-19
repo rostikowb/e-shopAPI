@@ -20,6 +20,7 @@ export const boughtCreate = async (req, res) => {
     let branchN = req.body?.UD?.optBranchN;
     let goods = req.body?.goods;
     let cupon = req.body?.UD?.cupon;
+    let msg = req.body?.UD?.msg
     let userCupon;
 
     let auth;
@@ -112,6 +113,7 @@ export const boughtCreate = async (req, res) => {
         stage: 0,
         pay: 0,
         cupon: cupon || 0,
+        msg,
     });
 
     try {
@@ -124,9 +126,9 @@ export const boughtCreate = async (req, res) => {
 
         if (userId) {
             UD = await User.findById(userId);
-            console.log('cupon',cupon);
+            // console.log('cupon',cupon);
             if (cupon && Number.isInteger(cupon)) {
-                console.log('cupooooooon');
+                // console.log('cupooooooon');
                 const index = UD.cupon.indexOf(cupon);
                 if (index > -1) {
                     UD.cupon = UD.cupon.splice(index, 1);
