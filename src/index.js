@@ -1,7 +1,4 @@
-import bodyParser from "body-parser";
-
 require('dotenv').config();
-
 import express from 'express';
 import {mongoConnection} from './modules/core/db';
 import logger from './modules/core/logger';
@@ -13,7 +10,7 @@ import errorHandling from './modules/core/errorHandling';
 import uploads from './modules/core/uploadsFile';
 
 import {axusInsertMany, axusInsertToDB, priceCorect, search, upMany} from "./yamlConverter";
-import {sss} from "./ыыыы";
+
 const PORT = process.env.PORT || 5000;
 const app = express();
 

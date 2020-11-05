@@ -1,4 +1,4 @@
-import Goods from '../../models/GoodsModel';
+import Goods from '../../../models/GoodsModel';
 import mongoose from 'mongoose';
 
 const goodsGetById = (req, res) => {

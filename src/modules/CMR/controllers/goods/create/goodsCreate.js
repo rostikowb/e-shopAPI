@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import Goods from '../../models/GoodsModel';
+import Goods from '../../../models/GoodsModel';
 
 export default async function todoCreate(req, res) {
     Goods.find({title: req.body.title}).then(result => {

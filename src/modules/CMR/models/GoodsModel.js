@@ -50,6 +50,7 @@ const GoodsSchema = new Schema(
         //name
         nm: {
             type: String,
+
             // required: true
         },
         //vendor
@@ -96,9 +97,10 @@ const GoodsSchema = new Schema(
     },
 );
 
-// GoodsSchema.index({
-//     dscrptn: "text",
-//     default_language: "russian"
-// });
+GoodsSchema.index({
+    dscrptn: "text",
+    nm: "text",
+    default_language: "russian"
+});
 
 export default model('goods', GoodsSchema);

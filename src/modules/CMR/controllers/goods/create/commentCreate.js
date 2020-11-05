@@ -1,6 +1,6 @@
-import Goods from "../../models/GoodsModel";
-import Bought from "../../models/BoughtModel";
-import User from "../../models/UserModel";
+import Goods from "../../../models/GoodsModel";
+import Bought from "../../../models/BoughtModel";
+import User from "../../../models/UserModel";
 
 export const commentCreate = async (req, res) => {
 

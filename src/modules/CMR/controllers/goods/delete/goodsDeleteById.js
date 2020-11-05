@@ -1,4 +1,4 @@
-import Todo from '../../models/GoodsModel';
+import Todo from '../../../models/GoodsModel';
 
 const goodsDeleteById = (req, res) => {
   const id = req.params.todoId;
