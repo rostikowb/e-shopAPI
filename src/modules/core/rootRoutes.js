@@ -3,6 +3,7 @@ import goodsRouter from '../CMR/routes/goodsRouters';
 import boughtRouter from "../CMR/routes/boughtRouters";
 import ticketsRouter from "../CMR/routes/ticketRouters";
 import imgRouter from "../CMR/routes/imgRouters";
+import filtersRouter from "../CMR/routes/filtersRouters"
 import express from 'express';
 import path from "path";
 const root = path.join(path.dirname(require.main.filename), '/../static');
@@ -14,5 +15,6 @@ export default function routes(app) {
     app.use('/ticket', ticketsRouter);
     app.use('/img', imgRouter);
     // app.use('/bought', checkAuth, boughtRouter);
+    app.use('/filter', filtersRouter);
     app.use('/static', express.static(root));
 }

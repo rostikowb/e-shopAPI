@@ -22,22 +22,48 @@ const sortF = (sort, sortObj) => {
   }
 };
 
+const addFiltToPar = (filArr) => {
+  const arr = {$and: []};
+  let rtlPrc = false;
+  let i = 0;
+
+  filArr.forEach((item) => {
+
+    if (item.name === 'Цена') {
+      rtlPrc = item.valueArr[0].split('-')
+    } else {
+      arr.$and.push({$or: []})
+      item.valueArr.forEach(value => {
+        arr.$and[i].$or.push({"prm.name": item.name, "prm.value": value})
+      })
+      i++
+    }
+  })
+
+  return {arr, rtlPrc}
+}
+
 
 const goodsGetAll = (req, res) => {
-  // console.log(req.query);
+
   let catalog = req.params['catalog'];
   let page = req.query['page'];
+  let filter = req.body?.filter
   let sort = sortF(req.query['sort'], {avlbl: -1});
   let findParam = {};
 
-  if (catalog) {
-    findParam.ctgrId = catalog
+  if (filter) {
+    const params = addFiltToPar(filter);
+
+    if (params.arr.$and.length) findParam = params.arr;
+    if (params.rtlPrc) findParam.rtlPrc = {$gte: Number(params.rtlPrc[0]), $lte: Number(params.rtlPrc[1])}
   }
+
+  if (catalog) findParam.ctgrId = Number(catalog);
 
   sort.ready = -1;
   sort._id = 1;
 
-  // console.log(sort);
   Goods.find(findParam)
     .sort(sort)
     .skip(page ? page * 29 : 0)
@@ -47,6 +73,7 @@ const goodsGetAll = (req, res) => {
       res.status(200).json(docs);
     })
     .catch(err => {
+      console.log("err", err);
       res.status(200).json(err);
     });
 };

@@ -29,10 +29,10 @@ export const saveImg = async (base64, path, name) => {
                 .webp({quality: 100})
                 .toFile(`${absoPath}/webp/${path}/${name}-1024.webp`),
 
-            sharp(Buffer.from(base64, 'base64'))
-                .resize({ width: 1600, height:null })
-                .webp({quality: 100})
-                .toFile(`${absoPath}/webp/${path}/${name}-1600.webp`),
+            // sharp(Buffer.from(base64, 'base64'))
+            //     .resize({ width: 1600, height:null })
+            //     .webp({quality: 100})
+            //     .toFile(`${absoPath}/webp/${path}/${name}-1600.webp`),
 
             sharp(Buffer.from(base64, 'base64'))
                 .resize({ width: 400, height:null })
@@ -49,10 +49,10 @@ export const saveImg = async (base64, path, name) => {
                 .jpeg({quality: 100})
                 .toFile(`${absoPath}/jpeg/${path}/${name}-1024.jpeg`),
 
-            sharp(Buffer.from(base64, 'base64'))
-                .resize({ width: 1600, height:null })
-                .jpeg({quality: 100})
-                .toFile(`${absoPath}/jpeg/${path}/${name}-1600.jpeg`),
+            // sharp(Buffer.from(base64, 'base64'))
+            //     .resize({ width: 1600, height:null })
+            //     .jpeg({quality: 100})
+            //     .toFile(`${absoPath}/jpeg/${path}/${name}-1600.jpeg`),
         ]);
         // console.log(result.length);
         return {invalid: false,};

@@ -15,9 +15,10 @@ const goodsGetById = (req, res) => {
             .exec()
             .then(doc => {
                 if (doc) {
+                    // console.log(doc);
                     res.status(200).json(doc);
                 } else {
-                    res.status(200).json('Такого товара нет в базе');
+                    res.status(200).json(false);
                 }
             })
             .catch(err => {
@@ -25,7 +26,7 @@ const goodsGetById = (req, res) => {
                 res.status(200).json({error: err});
             });
     } else {
-        res.status(200).json('Такого товара нет в базе');
+        res.status(200).json(false);
     }
 };
 export default goodsGetById;

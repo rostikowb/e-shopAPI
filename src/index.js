@@ -1,3 +1,4 @@
+import {avlblDel} from "./scripts/avlblDel";
 require('dotenv').config();
 import express from 'express';
 import {mongoConnection} from './modules/core/db';
@@ -8,8 +9,9 @@ import routes from './modules/core/rootRoutes';
 import cors from './modules/core/cors';
 import errorHandling from './modules/core/errorHandling';
 import uploads from './modules/core/uploadsFile';
-
-import {axusInsertMany, axusInsertToDB, priceCorect, search, upMany} from "./yamlConverter";
+import {axusUpdateGoods} from "./scripts/updateAxus/updateAxus";
+import {goodsCount} from "./scripts/goodsCaunt";
+import {filterColector} from "./scripts/filterColector/filterColector";
 
 const PORT = process.env.PORT || 5000;
 const app = express();
@@ -29,27 +31,10 @@ app.listen(PORT, () => {
 });
 
 
-// axusInsertMany();
 
-// upMany();
-
-// test().then(t=>{
-//     console.log(t);
-// }).catch(err=>{
-//     console.log(err);
-// });
-
-// console.log(path.dirname('./src/axus_all_dropprice.xml'));
-
-
-// axusInsertToDB();
-
-// sss();
-
-// search();
-// priceCorect();
-
-// let p = Promise.resolve();
-
-// promiseCreators.reduce((n=Promise.resolve(),t)=>n.then(t));
-// promiseCreators.forEach(f => p = p.then(f))
+// goodsCount()
+// avlblDel().then(()=>{
+//
+// })
+// filterColector()
+// axusUpdateGoods()
