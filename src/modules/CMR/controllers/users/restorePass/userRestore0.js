@@ -1,5 +1,5 @@
-import User from "../../models/UserModel";
-import {sendMail} from "./func/mailer";
+import User from "../../../models/UserModel";
+import {sendMail} from "../func/mailer";
 
 export const userRestore0 = async (req, res) => {
     // console.log(req.headers);

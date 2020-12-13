@@ -57,7 +57,7 @@ export const boughtCreate = async (req, res) => {
                         });
 
                         let userRes = await user.save();
-                        let result = new Bcrypt(pass, user.pass, user.email, user._id, bcrypt, jwt);
+                        let result = new Bcrypt(pass, user.pass, user.email, user._id, user.rights, bcrypt, jwt);
 
                         try {
                             auth = await result.hashValidation(res, userRes);
@@ -142,6 +142,12 @@ export const boughtCreate = async (req, res) => {
             }
 
             UD.boughtArr = [...UD.boughtArr, bought._id];
+            if(!UD.FN) UD.FN = FN;
+            if(!UD.LN) UD.LN = LN;
+            if(!UD.SN) UD.SN = SN;
+            if(!UD.tel) UD.tel = tel;
+            if(!UD.city) UD.city = city;
+            if(!UD.branchN) UD.branchN = branchN;
 
             UD = await Promise.all([
                 UD.save(),

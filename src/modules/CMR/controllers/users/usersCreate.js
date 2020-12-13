@@ -32,7 +32,7 @@ export const usersCreate = async (req, res) => {
                 user
                     .save()
                     .then(user => {
-                        let result = new Bcrypt(pass, user.pass, user.email, user._id, bcrypt, jwt);
+                        let result = new Bcrypt(pass, user.pass, user.email, user._id, user.rights, bcrypt, jwt);
                         result.hashValidation(res, user).then(e => {
                             return res.status(200).json(e);
                         });

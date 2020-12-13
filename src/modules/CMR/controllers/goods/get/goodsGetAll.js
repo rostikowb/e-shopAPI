@@ -47,6 +47,7 @@ const addFiltToPar = (filArr) => {
 const goodsGetAll = (req, res) => {
 
   let catalog = req.params['catalog'];
+  console.log('catalog', catalog);
   let page = req.query['page'];
   let filter = req.body?.filter
   let sort = sortF(req.query['sort'], {avlbl: -1});

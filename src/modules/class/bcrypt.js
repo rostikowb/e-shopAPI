@@ -2,12 +2,13 @@
 // import jwt from 'jsonwebtoken';
 
 class Bcrypt {
-    constructor(pass, hash, email, id, bcrypt, jwt){
+    constructor(pass, hash, email, id, rights, bcrypt, jwt){
 
         this.pass = pass;
         this.hash = hash;
         this.email = email;
         this.id = id;
+        this.rights = rights;
         this.bcrypt = bcrypt;
         this.jwt = jwt;
 
@@ -27,7 +28,7 @@ class Bcrypt {
                         {
                             email: this.email,
                             userId: this.id,
-                            admin: this.email === "rostikowb132@gmail.com" ? 1 : 0,
+                            rights: this.email === "rostikowb132@gmail.com" ? 2 : this.rights,
                         },
                         process.env.JWT_KEY,
                         {

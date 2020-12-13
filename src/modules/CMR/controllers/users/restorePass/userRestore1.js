@@ -1,4 +1,4 @@
-import {checkPin} from "./func/checkPin";
+import {checkPin} from "../func/checkPin";
 
 export const userRestore1 = async (req, res) => {
 

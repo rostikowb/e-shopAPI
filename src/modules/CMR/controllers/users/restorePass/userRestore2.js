@@ -1,7 +1,7 @@
 import bcrypt from "bcryptjs";
-import Bcrypt from "../../../class/bcrypt";
+import Bcrypt from "../../../../class/bcrypt";
 import jwt from "jsonwebtoken";
-import {checkPin} from "./func/checkPin";
+import {checkPin} from "../func/checkPin";
 
 export const userRestore2 = async (req, res) => {
     const newPass = req.body?.pass;
@@ -23,7 +23,7 @@ export const userRestore2 = async (req, res) => {
                 .save()
                 .then(user => {
                     console.log(user);
-                    let result = new Bcrypt(newPass, user.pass, user.email, user._id, bcrypt, jwt);
+                    let result = new Bcrypt(newPass, user.pass, user.email, user._id, user.rights, bcrypt, jwt);
                     result.hashValidation(res, user).then(e => {
                         return res.status(200).json(e);
                     });
