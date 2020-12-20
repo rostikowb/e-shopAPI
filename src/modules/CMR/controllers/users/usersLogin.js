@@ -1,7 +1,7 @@
 import User from "../../models/UserModel";
 import bcrypt from "bcryptjs";
 import jwt from 'jsonwebtoken';
-import Bcrypt from '../../../class/bcrypt'
+import Bcrypt from '../../../helpers/bcrypt'
 
 export const userLogin = (req, res) => {
 

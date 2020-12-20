@@ -17,7 +17,7 @@ const router = Router();
 
 router.post('/signup', usersCreate);
 router.post('/login', userLogin);
-router.post('/read', checkAuth, decodeToken, userReadOne);
+// router.post('/read', checkAuth, decodeToken, userReadOne);
 router.post('/readAll', isAdmin, userReadAll);
 router.post('/update', isAdmin, userUpdateOne);
 router.post('/restore0', userRestore0);

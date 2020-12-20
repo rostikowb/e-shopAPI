@@ -1,4 +1,4 @@
-import BoughtModel from "../../models/BoughtModel";
+import BoughtModel from "../../../models/BoughtModel";
 
 export const boughtReadAll = async (req, res) => {
     let bought;

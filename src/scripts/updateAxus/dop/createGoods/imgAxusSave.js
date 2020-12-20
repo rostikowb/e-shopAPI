@@ -1,5 +1,5 @@
 import bent from "bent";
-import {saveImg} from "../../../../modules/class/dopFunc";
+import {saveImg} from "../../../../modules/helpers/dopFunc";
 import md5 from "md5"
 
 export const imageAxusSave = async (item, goods) =>{

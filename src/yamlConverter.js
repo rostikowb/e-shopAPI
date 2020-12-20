@@ -3,7 +3,7 @@ import Goods from './modules/CMR/models/GoodsModel';
 import {parseString} from 'xml2js';
 import fs from 'fs';
 import bent from 'bent';
-import {saveImg} from "./modules/class/dopFunc";
+import {saveImg} from "./modules/helpers/dopFunc";
 
 
 const md5 = require("md5");

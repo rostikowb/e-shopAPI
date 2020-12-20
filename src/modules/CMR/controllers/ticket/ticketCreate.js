@@ -39,6 +39,13 @@ export const ticketsCreate = async (req, res) => {
         ticket = new Ticket(ticket);
         ticket = await ticket.save();
         console.log(ticket);
+
+        try {
+            await req.TeleBot.newOrder({type: 'ticket', id: ticket._id})
+        }catch (e) {
+            console.log(e);
+        }
+
         return res.status(200).json({
             invalid: false,
             msg: 'ok'

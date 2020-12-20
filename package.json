@@ -40,11 +40,13 @@
     "nodemailer": "^6.4.13",
     "randomstring": "^1.1.5",
     "sendmail": "^1.6.1",
-    "sharp": "^0.25.4"
+    "sharp": "^0.25.4",
+    "telegraf": "^3.38.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",
     "@babel/core": "^7.10.5",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.10.4",
     "@babel/plugin-proposal-optional-chaining": "^7.10.4",
     "@babel/plugin-proposal-pipeline-operator": "^7.10.5",

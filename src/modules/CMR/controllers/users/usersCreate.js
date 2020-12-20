@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import User from '../../models/UserModel';
 import bcrypt from 'bcryptjs';
-import Bcrypt from "../../../class/bcrypt";
+import Bcrypt from "../../../helpers/bcrypt";
 import jwt from "jsonwebtoken";
 import {userDataValidator} from "./func/userDataValidater";
 

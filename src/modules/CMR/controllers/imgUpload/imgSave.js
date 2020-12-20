@@ -1,4 +1,4 @@
-import {saveImg} from "../../../class/dopFunc";
+import {saveImg} from "../../../helpers/dopFunc";
 import Goods from '../../models/GoodsModel';
 const md5 = require("md5");
 
