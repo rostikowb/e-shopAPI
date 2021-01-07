@@ -1,5 +1,4 @@
 const sort = (arr) => {
-  console.log(arr);
   try {
     const number = /[0-9]*[.,]?[0-9]+/.test(arr[0])
 
@@ -11,7 +10,6 @@ const sort = (arr) => {
       return arr.sort();
     }
   } catch (e) {
-    console.log(e);
     return arr.sort();
   }
 }
