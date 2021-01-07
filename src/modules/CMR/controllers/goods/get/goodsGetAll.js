@@ -44,7 +44,7 @@ const addFiltToPar = (filArr) => {
 }
 
 
-const goodsGetAll = (req, res) => {
+export const goodsGetAll = (req, res) => {
 
   let catalog = req.params['catalog'];
   console.log('catalog', catalog);
@@ -79,4 +79,3 @@ const goodsGetAll = (req, res) => {
     });
 };
 
-export default goodsGetAll;

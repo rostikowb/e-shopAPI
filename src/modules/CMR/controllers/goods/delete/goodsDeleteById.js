@@ -1,14 +1,15 @@
-import Todo from '../../../models/GoodsModel';
+import GoodsModel from '../../../models/GoodsModel';
 
-const goodsDeleteById = (req, res) => {
-  const id = req.params.todoId;
-  Todo.remove({ _id: id })
+export const goodsDeleteById = (req, res) => {
+  const id = req.body?._id;
+
+  GoodsModel.remove({ _id: id })
     .exec()
     .then(doc => {
       if (doc.n) {
-        res.status(200).json('Todo deleted');
+        return res.status(200).json({invalid: false});
       } else {
-        res.status(400).json('Todo not found');
+        return res.status(200).json({invalid: true, msg:'not found'});
       }
     })
     .catch(err => {
@@ -17,4 +18,3 @@ const goodsDeleteById = (req, res) => {
     });
 };
 
-export default goodsDeleteById;

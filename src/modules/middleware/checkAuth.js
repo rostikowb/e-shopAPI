@@ -10,7 +10,7 @@ export const checkAuth = (req, res, next) => {
 	} catch (e) {
 		// удали токен, бо не дійсний
 		return res.status(200).json({
-			message: 'Auth failed!',
+			msg: 'Auth failed!',
 		});
 	}
 };

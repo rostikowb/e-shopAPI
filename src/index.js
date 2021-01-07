@@ -13,6 +13,7 @@ import {axusUpdateGoods} from "./scripts/updateAxus/updateAxus";
 import {goodsCount} from "./scripts/goodsCaunt";
 import {filterColector} from "./scripts/filterColector/filterColector";
 import {botInit} from "./modules/core/botInit";
+import {filterRestruct} from "./scripts/filterRestruct/filterRestruct";
 
 const PORT = process.env.PORT || 5000;
 const app = express();
@@ -21,7 +22,7 @@ app.disable('x-powered-by'); // ОТКЛЮЧАЕМ EXPRESS SIGNATURE
 mongoConnection();
 logger(app);
 cors(app);
-botInit(app).then(r => {
+botInit(app).then(() => {
   parseResponse(app);
   ignoreFavicon(app);
   uploads(app);
@@ -34,7 +35,7 @@ app.listen(PORT, () => {
   console.log(`Node cluster worker ${process.pid}: listening on port ${PORT}`);
 });
 
-
+// filterRestruct()
 
 // goodsCount()
 // avlblDel().then(()=>{

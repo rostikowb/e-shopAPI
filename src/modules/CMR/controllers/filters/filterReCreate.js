@@ -3,15 +3,21 @@ import Goods from "../../models/GoodsModel";
 import {filtersAddToBd} from "./lib/filtersAddToBd";
 import {prmItemCheck} from "./lib/prmItemCheck";
 import {priceRangeCheck} from "./lib/priceRangeCheck";
+import {prmSort} from "./lib/prmSort";
 
 export const filterReCreate = async (req, res) => {
 
   try {
-    await Params.collection.drop();
+    try{
+      await Params.collection.drop();
+    }catch (e) {
+
+    }
+
 
     const goods = Goods.find()
     const items = await goods.select('prm ctgrId rtlPrc')
-    const arr = {}
+    let arr = {}
 
     items.forEach((item) => {
 
@@ -22,6 +28,7 @@ export const filterReCreate = async (req, res) => {
 
     })
 
+    arr = prmSort(arr)
     await filtersAddToBd(arr)
 
     return res.status(200).json({invalid: false, msg: 'ok'});
